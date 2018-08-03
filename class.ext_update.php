@@ -31,7 +31,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extensionmanager\Utility\InstallUtility;
-use TYPO3\CMS\Install\Service\SqlSchemaMigrationService;
+// use TYPO3\CMS\Install\Service\SqlSchemaMigrationService;
 
 /**
  * Class for updating the db
@@ -47,7 +47,7 @@ class ext_update
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager Extbase Object Manager
 	 */
 	protected $objectManager;
-	
+
 	/**
 	 * @var \TYPO3\CMS\Extensionmanager\Utility\InstallUtility Extension Manager Install Tool
 	 */
@@ -62,10 +62,13 @@ class ext_update
 	{
 		$content = '';
 
+		// UPDATE deactivated
+		return '<p>Update is deactivated. You have to check your database structure and data</p>';
+
 		$this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 		$this->installTool = $this->objectManager->get(InstallUtility::class);
-		$installToolSqlParser = GeneralUtility::makeInstance(SqlSchemaMigrationService::class);
-		$this->installTool->injectInstallToolSqlParser($installToolSqlParser);
+		// $installToolSqlParser = GeneralUtility::makeInstance(SqlSchemaMigrationService::class);
+		// $this->installTool->injectInstallToolSqlParser($installToolSqlParser);
 		$databaseUpdateUtility = GeneralUtility::makeInstance(DatabaseUpdateUtility::class);
 
 		// Clear the class cache
