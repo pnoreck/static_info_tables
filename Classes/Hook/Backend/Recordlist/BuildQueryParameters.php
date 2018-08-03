@@ -44,7 +44,7 @@ class BuildQueryParameters
 	 * @param AbstractDatabaseRecordList $parentObj
 	 * @return void
 	 */
-	public function buildQueryParametersPostProcess(&$parameters, $table, $pageId, $additionalConstraints, $fieldList, AbstractDatabaseRecordList $parentObj)
+	public function buildQueryParametersPostProcess(&$parameters, $table, $pageId, $additionalConstraints, $fieldList, DatabaseRecordList $parentObj)
 	{
 		if (in_array($table, array_keys($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['static_info_tables']['tables']))) {
 			$lang = substr(strtolower($this->getLanguageService()->lang), 0, 2);
